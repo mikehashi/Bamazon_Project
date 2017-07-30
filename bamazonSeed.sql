@@ -20,8 +20,6 @@ VALUES ("To Catch a Mockingbird", "Books", 10, 50),
 ("Amazon Fire Stick", "Fire TV", 40, 400),
 ("Amazon Echo", "Echo & Alexa", 180 , 2000),
 ("Starship Troopers", "Movies, Music, & Games", 20, 225),
-("Longboard", "Sports & Outdoors", 80, 710);
-("", "Krewella", "Dance", ";asdjkfa");
-
-INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Human", "Krewella", "Dance", ";asdjkfa");
+("Longboard", "Sports & Outdoors", 80, 710),
+("Dry Dog Food", "Home, Garden, & Tools", 50, 810),
+("Deodorant", "Beauty & Health", 8, 15);
