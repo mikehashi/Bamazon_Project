@@ -66,7 +66,7 @@ function buyItem() {
         }
 
         // determine if there are enough units
-        if (chosenItem.stock_quantity > parseInt(answer.count)) {
+        if (chosenItem.stock_quantity >= parseInt(answer.count)) {
           var totalAmount = chosenItem.price*(parseInt(answer.count));
           var newQuantity = chosenItem.stock_quantity - (parseInt(answer.count));
 
