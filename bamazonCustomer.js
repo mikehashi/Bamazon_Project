@@ -67,6 +67,7 @@ function buyItem() {
 
         // determine if there are enough units
         if (chosenItem.stock_quantity > parseInt(answer.count)) {
+          var totalAmount = chosenItem.price*(parseInt(answer.count));
           var newQuantity = chosenItem.stock_quantity - (parseInt(answer.count));
 
           // bid was high enough, so update db, let the user know, and start over
@@ -82,14 +83,18 @@ function buyItem() {
             ],
             function(error) {
               if (error) throw err;
-              console.log("Order placed!");
+              console.log("**------------------------**");
+              console.log("You ordered $" + totalAmount + " worth of units. Order placed!");
+              console.log("**------------------------**");
               displayTable();
             }
           );
         }
         else {
           // bid wasn't high enough, so apologize and start over
+          console.log("**------------------------**");
           console.log("We don't have enough for your order...");
+          console.log("**------------------------**");
           displayTable();
         }
       });
