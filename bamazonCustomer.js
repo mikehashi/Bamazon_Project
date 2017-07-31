@@ -44,7 +44,7 @@ function buyItem() {
           choices: function() {
             var choiceArray = [];
             for (var i = 0; i < results.length; i++) {
-              choiceArray.push(results[i].item_name);
+              choiceArray.push(results[i].product_name);
             }
             return choiceArray;
           },
@@ -60,19 +60,21 @@ function buyItem() {
         // get the information of the chosen item
         var chosenItem;
         for (var i = 0; i < results.length; i++) {
-          if (results[i].item_name === answer.choice) {
+          if (results[i].product_name === answer.choice) {
             chosenItem = results[i];
           }
         }
 
         // determine if there are enough units
-        if (chosenItem.stock_quantity > parseInt(answer.bid)) {
+        if (chosenItem.stock_quantity > parseInt(answer.count)) {
+          var newQuantity = chosenItem.stock_quantity - (parseInt(answer.count));
+
           // bid was high enough, so update db, let the user know, and start over
           connection.query(
             "UPDATE products SET ? WHERE ?",
             [
               {
-                stock_quantity: stock_quantity - answer.bid
+                stock_quantity: newQuantity
               },
               {
                 item_id: chosenItem.item_id
